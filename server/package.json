@@ -9,18 +9,18 @@
   },
   "scripts": {
     "start": "node index.js",
-		"dev": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmoyo/node-react.git"
+    "url": "git+https://github.com/lmoyo/email-app.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lmoyo/node-react/issues"
+    "url": "https://github.com/lmoyo/email-app/issues"
   },
-  "homepage": "https://github.com/lmoyo/node-react#readme",
+  "homepage": "https://github.com/lmoyo/email-app#readme",
   "dependencies": {
     "express": "^4.17.1",
     "passport": "^0.4.1",
