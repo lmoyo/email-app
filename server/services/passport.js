@@ -28,28 +28,22 @@ passport.use(
 		callbackURL: '/auth/google/callback',
 		proxy: true
 	},
-	(accessToken, refreshToken, profile, done) => {
+	async (accessToken, refreshToken, profile, done) => {
 		
 		//look through users collection to see if google id already exists
-		User.findOne({ googleId: profile.id })
-		.then((existingUser) => {
-			if(existingUser) {
-					// profile id record already exists
-
-			done(null, existingUser); //first param error obj, null since success
-			} else {
-					//create user new model instance 
-				new User({
-					googleId: profile.id
-				}).save()
-				.then(user => done(null, user)); //creates another model instance representing same instance, always use second one
-			}
-		}) 
+		const existingUser = await User.findOne({ googleId: profile.id })
 		
+		// profile id record already exists
+		if(existingUser) {
 
+			return done(null, existingUser); //first param error obj, null since success
+		}
+
+		//create user new model instance 
+		const user = await new User({
+			googleId: profile.id
+		}) .save();
+		done(null, user);
 		
-		// console.log('accessToken: ', accessToken);
-		// console.log('refresh token: ', refreshToken);
-		// console.log('profile: ', profile);
 	})
 );
