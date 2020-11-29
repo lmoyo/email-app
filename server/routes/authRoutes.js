@@ -9,8 +9,6 @@ module.exports = (app) => {
             scope: ['profile', 'email'] //scope specifies what access we want
         })
     );
-
-
    
     app.get(
         '/auth/google/callback', 
